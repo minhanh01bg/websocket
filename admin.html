@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket Thing2</title>
+</head>
+<body>
+    admin_1
+    <button onclick="sendMessage()">Send Msg</button>
+    <div class="display">
+
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    // Create WebSocket connection.
+    const socket = new WebSocket('ws://localhost:3001?id=admin_1');
+
+    // Connection opened
+    socket.addEventListener('open', function (event) {
+        console.log('Connected to WS Server')
+    });
+    // Listen for messages
+    socket.addEventListener('message', function (event) {
+        //console.log(event)
+        console.log('Message from server ', event.data);
+        $('.display').append(JSON.parse(event.data));
+    });
+
+    const sendMessage = () => {
+        const mess = {
+            id:"request_1",
+            bin: {
+                id:"bin_1",
+                lat:21.0419,
+                long: 105.821
+            },
+            vehicle: {
+                id:"vehicle_1",
+                lat:21.0382,
+                long:105.82501
+            }
+        }
+        const mess1 = {
+            id:"request_1",
+            bin: {
+                id:"bin_1",
+                lat:21.03155,
+                long:105.83629
+            },
+            vehicle: {
+                id:"vehicle_1",
+                lat:21.03279,
+                long:105.84104
+            }
+        }
+        socket.send(JSON.stringify(mess));
+    }
+</script>
+</html>

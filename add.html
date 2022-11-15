@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test register form</title>
+        <style>
+            input {
+                display: block;
+                margin-bottom: 3px;
+            }
+            body {
+                display: flex;
+            }
+            body>div {
+                flex: 1;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Multipart form register -->
+        <div class="">
+            <h1>Add Driver</h1>
+            <form id="add-driver" method="post" enctype="multipart/form-data">
+                <input type="text" name="phone" placeholder="Phone">
+                <input type="text" name="email" placeholder="Email">
+                <input type="password" name="password" placeholder="Password">
+                <input type="text" name="firstName" placeholder="firstName">
+                <input type="text" name="lastName" placeholder="lastName">
+                <input type="text" name="gender" placeholder="gender">
+                <input type="text" name="dob" placeholder="dob">
+                <input type="file" name="image">
+                <input type="submit" value="Add user">
+            </form>
+        </div>
+        <!-- <div class="">
+            <h1>Add Vehicle</h1>
+            <form id="add-vehicle" method="post" enctype="multipart/form-data">
+                <input type="text" name="latitude" placeholder="latitude">
+                <input type="text" name="longitude" placeholder="longitude">
+                <input type="text" name="model" placeholder="model">
+                <input type="text" name="engineHours" placeholder="engineHours">
+                <input type="text" name="odometer" placeholder="odometer">
+                <input type="text" name="plate" placeholder="plate">
+                <input type="text" name="altitude" placeholder="altitude">
+                <input type="text" name="angle" placeholder="angle">
+                <input type="text" name="status" placeholder="status">
+                <input type="file" name="image">
+                <input type="submit" value="Add vehicle">
+        </div> -->
+        <div class="">
+            <h1>Add Bin</h1>
+            <form id="add-bin" method="post" enctype="multipart/form-data">
+                <input type="text" name="latitude" placeholder="latitude">
+                <input type="text" name="longitude" placeholder="longitude">
+                <input type="text" name="heigth" placeholder="heigth">
+                <input type="text" name="weight" placeholder="weight">
+                <input type="text" name="maxWeight" placeholder="maxWeight">
+                <input type="text" name="status" placeholder="status">
+                <input type="text" name="areaId" placeholder="areaId">
+                <input type="file" name="image">
+                <input type="submit" value="Add bin">
+            </form>
+        </div>
+    </body>
+    <script>
+        const formDriver = document.querySelector('#add-driver');
+        formDriver.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(formDriver);
+            fetch('http://localhost:3001/api/auth/register', {
+                method: 'POST',
+                headers: {
+                  'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY4MTYzNjczLCJleHAiOjE2OTk2OTk2NzN9.9IAChhGj05batqThnXQfRSvxBuQ8JZiEWC_3oYQ1sS8'
+                },
+                body: formData
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log('Success:', result);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        // const formVehicle = document.querySelector('#add-vehicle');
+        // formVehicle.addEventListener('submit', (e) => {
+        //     e.preventDefault();
+        //     const formData = new FormData(formVehicle);
+        //     fetch('http://localhost:5000/api/v1/vehicles/add', {
+        //         method: 'POST',
+        //         headers: {
+        //             'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY4MTYzNjczLCJleHAiOjE2OTk2OTk2NzN9.9IAChhGj05batqThnXQfRSvxBuQ8JZiEWC_3oYQ1sS8'
+        //         },
+        //         body: formData
+        //     })
+        //         .then(response => response.json())
+        //         .then(result => {
+        //             console.log('Success:', result);
+        //         })
+        //         .catch(error => {
+        //             console.error('Error:', error);
+        //         });
+        // });
+        const formBin = document.querySelector('#add-bin');
+            formBin.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(formBin);
+                fetch('http://localhost:3001/api/v1/bins/add', {
+                    method: 'POST',
+                    headers: {
+                        'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY4MTYzNjczLCJleHAiOjE2OTk2OTk2NzN9.9IAChhGj05batqThnXQfRSvxBuQ8JZiEWC_3oYQ1sS8'
+                    },
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        console.log('Success:', result);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+    </script>
+
+</html>
