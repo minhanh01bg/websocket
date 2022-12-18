@@ -133,7 +133,7 @@ const sendMessage = () => {
 checkConnection().then(() => {
         updateService(dataTemporary);
     });
-    }
+}
 // Connection opened
 // socket.addEventListener('open', function (event) {
 //     console.log('Connected to WS Server')

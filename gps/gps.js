@@ -210,7 +210,7 @@ var dataTemporary = [[21.0419, 105.821],
 [21.0382, 105.82501]
 ];
 dataTemporary = dataTemporary.filter((item, index) => dataTemporary.indexOf(item) === index);
-const base_url = 'ws://127.0.0.1:3001?id=gps_1'
+const base_url = 'ws://127.0.0.1:5000?id=gps_1'
 // const base_url = 'ws://192.168.1.86:3000/2'
 // const base_url = 'ws://172.20.10.3:3000/2'
 

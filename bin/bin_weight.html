@@ -17,7 +17,7 @@
 <script>
     // Create WebSocket connection.
     //const WebSocket = require('ws')
-    const socket = new WebSocket('ws://localhost:3001?id=bin_1');
+    const socket = new WebSocket('ws://localhost:5000?id=bin_1');
     
     // Connection opened
     socket.addEventListener('open', function (event) {
@@ -33,9 +33,10 @@
     const sendMessage = () => {
         //let mess = $('#mess').val();
         let mess={
-            id:"bin_1",
-            lat:123.213,
-            long:12313
+            id:"bin_weight_1",
+            weight:30,
+            //lat:123.213,
+            //long:12313
         }
         socket.send(JSON.stringify(mess));
     }

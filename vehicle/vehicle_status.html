@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket Thing1</title>
+</head>
+<body>
+    Client1
+    <div>
+        <input type="text" id="mess">
+    </div>
+    <button onclick="sendMessage()">Send Msg</button>
+    <div class="chat"></div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    // Create WebSocket connection.
+    //const WebSocket = require('ws')
+    const socket = new WebSocket('ws://localhost:5000?id=vehicle_1');
+    
+    // Connection opened
+    socket.addEventListener('open', function (event) {
+        console.log('Connected to WS Server')
+    });
+    const reader = new FileReader();
+    // Listen for messages
+    socket.addEventListener('message', function (event) {
+        console.log('Message from server ', event.data);
+        $('.chat').append(JSON.parse(event.data));
+    });
+    
+    const sendMessage = () => {
+        //let mess = $('#mess').val();
+        let mess={
+            id:"vehicle_status_1",
+            altitude:123,
+            speed:123,
+            angle:90,
+            state:'',
+            status:'full',
+            description:'vehicle full',
+        }
+        socket.send(JSON.stringify(mess));
+    }
+</script>
+</html>

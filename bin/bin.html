@@ -6,7 +6,7 @@
     <title>Socket Thing1</title>
 </head>
 <body>
-    Client1
+    bin
     <div>
         <input type="text" id="mess">
     </div>
@@ -17,7 +17,7 @@
 <script>
     // Create WebSocket connection.
     //const WebSocket = require('ws')
-    const socket = new WebSocket('ws://localhost:3001?id=vehicle');
+    const socket = new WebSocket('ws://localhost:5000?id=bin_1');
     
     // Connection opened
     socket.addEventListener('open', function (event) {
@@ -33,9 +33,12 @@
     const sendMessage = () => {
         //let mess = $('#mess').val();
         let mess={
-            id:"vehicle_1",
-            //bin:[21.0419, 105.821],
-            //vehicle:[21.03155, 105.83629]
+            id:"bin_1",
+            weight:30,
+            status:'full',
+            description:'bin full'
+            //lat:123.213,
+            //long:12313
         }
         socket.send(JSON.stringify(mess));
     }

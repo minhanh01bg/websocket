@@ -15,7 +15,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     // Create WebSocket connection.
-    const socket = new WebSocket('ws://localhost:3001?id=admin_1');
+    const socket = new WebSocket('ws://localhost:5000?id=admin_1');
 
     // Connection opened
     socket.addEventListener('open', function (event) {
@@ -46,16 +46,16 @@
             id:"request_1",
             bin: {
                 id:"bin_1",
-                lat:21.03155,
-                long:105.83629
+                lat:21.023301,
+                long:105.842583
             },
             vehicle: {
                 id:"vehicle_1",
-                lat:21.03279,
-                long:105.84104
+                lat:21.03478,
+                long:105.82662
             }
         }
-        socket.send(JSON.stringify(mess));
+        socket.send(JSON.stringify(mess1));
     }
 </script>
 </html>
