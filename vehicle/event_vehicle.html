@@ -33,7 +33,7 @@
     const sendMessage = () => {
         //let mess = $('#mess').val();
         let mess={
-            id:"vehicle_1",
+            id:"vehicle_break_1",
             altitude:123,
             speed:123,
             angle:90,
@@ -43,5 +43,6 @@
         }
         socket.send(JSON.stringify(mess));
     }
+    setInterval(sendMessage,1000*10*60)
 </script>
 </html>

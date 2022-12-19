@@ -44,10 +44,13 @@ socket.addEventListener('message', function (event) {
     let routing = control.getRouter();
     let route = routing.route(waypoints, function(err, routes) {
         console.log(routes);
+        let coor = [];
         for(let i = 0; i < routes[0].coordinates.length; i++) {
-            console.log(routes[0].coordinates[i].lat);
-            console.log(routes[0].coordinates[i].lng);
+            // console.log(routes[0].coordinates[i].lat);
+            // console.log(routes[0].coordinates[i].lng);
+            coor.push([routes[0].coordinates[i].lat,routes[0].coordinates[i].lng])
         }
+        console.log(coor)
     }, control.options);
     // console.log(routing)
     // for(let i = 0;i<waypoints.length;i++){

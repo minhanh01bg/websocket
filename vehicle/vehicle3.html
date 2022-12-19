@@ -6,7 +6,7 @@
     <title>Socket Thing1</title>
 </head>
 <body>
-    bin
+    Client1
     <div>
         <input type="text" id="mess">
     </div>
@@ -17,7 +17,7 @@
 <script>
     // Create WebSocket connection.
     //const WebSocket = require('ws')
-    const socket = new WebSocket('ws://map-ws-exp.cleverapps.io?id=bin_1');
+    const socket = new WebSocket('ws://localhost:5000?id=vehicle_3');
     
     // Connection opened
     socket.addEventListener('open', function (event) {
@@ -33,14 +33,16 @@
     const sendMessage = () => {
         //let mess = $('#mess').val();
         let mess={
-            id:"bin_1",
-            weight:30,
-            status:'full',
-            description:'bin full'
-            //lat:123.213,
-            //long:12313
+            id:"vehicle_break_1",
+            altitude:123,
+            speed:123,
+            angle:90,
+            fuel:102,
+            trouble:'car puncture',
+            description:'car puncture',
         }
         socket.send(JSON.stringify(mess));
+        
     }
     setInterval(sendMessage,1000*10*60)
 </script>
